@@ -81,16 +81,18 @@ export function applyShoppingState(
   items: Omit<ShoppingItem, "checked">[],
   state: ShoppingState | undefined,
 ): ShoppingItem[] {
-  return items.map((item) => {
-    const override = state?.overrides?.[item.key];
-    return {
-      ...item,
-      qty: override ? override.qty : item.computedQty,
-      unit: override ? override.unit : item.computedUnit,
-      adjusted: Boolean(override),
-      checked: Boolean(state?.checked?.[item.key]),
-    };
-  });
+  return items
+    .filter((item) => !state?.cleared?.[item.key])
+    .map((item) => {
+      const override = state?.overrides?.[item.key];
+      return {
+        ...item,
+        qty: override ? override.qty : item.computedQty,
+        unit: override ? override.unit : item.computedUnit,
+        adjusted: Boolean(override),
+        checked: Boolean(state?.checked?.[item.key]),
+      };
+    });
 }
 
 export function groupByCategory(items: ShoppingItem[]) {
