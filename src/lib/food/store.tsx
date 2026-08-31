@@ -177,7 +177,8 @@ export function FoodProvider({ children }: { children: ReactNode }) {
     toggleChecked: (key) =>
       mutateShopping((s) => ({ ...s, checked: { ...s.checked, [key]: !s.checked[key] } })),
     uncheckAll: () => mutateShopping((s) => ({ ...s, checked: {} })),
-    clearCompleted: () => mutateShopping((s) => ({ ...s, checked: {} })),
+    clearCompleted: () =>
+      mutateShopping((s) => ({ ...s, cleared: { ...(s.cleared ?? {}), ...s.checked }, checked: {} })),
     setOverride: (key, qty, unit) =>
       mutateShopping((s) => ({ ...s, overrides: { ...s.overrides, [key]: { qty, unit } } })),
     resetOverride: (key) =>
