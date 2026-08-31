@@ -35,6 +35,8 @@ export interface ShoppingOverride {
 export interface ShoppingState {
   checked: Record<string, boolean>;
   overrides: Record<string, ShoppingOverride>;
+  /** lines the user removed from this week's list ("clear completed") */
+  cleared?: Record<string, boolean>;
 }
 
 export interface FoodData {
