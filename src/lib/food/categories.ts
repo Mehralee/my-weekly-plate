@@ -31,6 +31,8 @@ export const CATEGORIES: Category[] = [
 
 export const CATEGORY_ORDER: CategoryId[] = CATEGORIES.map((c) => c.id);
 
+const OTHER: Category = { id: "other", label: "Other", emoji: "📦" };
+
 export function category(id: CategoryId | string): Category {
-  return CATEGORIES.find((c) => c.id === id) ?? CATEGORIES[CATEGORIES.length - 1];
+  return CATEGORIES.find((c) => c.id === id) ?? OTHER;
 }
