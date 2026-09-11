@@ -108,13 +108,14 @@ export function MealEditorDialog({
         <div>
           <div className="mb-2 flex items-center justify-between">
             <p className="label-mono">Ingredients</p>
-            <button
+            <Button
+              variant="outline"
               type="button"
               onClick={() => setDraft({ ...draft, ingredients: [...draft.ingredients, emptyIngredient()] })}
               className="btn-outline-ink flex h-8 items-center gap-1 px-2.5 text-[10px]"
             >
               <Plus className="size-3" /> Row
-            </button>
+            </Button>
           </div>
 
           <div className="space-y-2">
@@ -127,7 +128,9 @@ export function MealEditorDialog({
                     placeholder="Ingredient"
                     className="h-10 flex-1 rounded-md border-foreground bg-background"
                   />
-                  <button
+                  <Button
+                    variant="outline"
+                    size="icon"
                     type="button"
                     onClick={() =>
                       setDraft({
@@ -139,7 +142,7 @@ export function MealEditorDialog({
                     aria-label={`Remove ${ing.name || "ingredient"}`}
                   >
                     <Trash2 className="size-4" />
-                  </button>
+                  </Button>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   <Input
